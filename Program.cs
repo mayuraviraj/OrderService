@@ -14,7 +14,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseInMemoryDatabase("OrdersDb"));
 
-// builder.Services.AddMediatR(typeof(CreateOrderHandler).Assembly);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderValidator>();

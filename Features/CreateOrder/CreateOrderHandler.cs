@@ -4,22 +4,16 @@ using OrderService.API.Infrastructure;
 
 namespace OrderService.API.Features.CreateOrder;
 
-public class CreateOrderHandler : IRequestHandler<CreateOrderCommand, Guid>
+public class CreateOrderHandler(AppDbContext db) : IRequestHandler<CreateOrderCommand, Guid>
 {
-    private readonly AppDbContext _db;
-
-    public CreateOrderHandler(AppDbContext db)
-    {
-        _db = db;
-    }
     public async Task<Guid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
         var order = new Order
         {
             CustomerName = request.CustomerName
         };
-        _db.Orders.Add(order);
-        await _db.SaveChangesAsync(cancellationToken);
+        db.Orders.Add(order);
+        await db.SaveChangesAsync(cancellationToken);
         return order.Id;
     }
 }
