@@ -1,0 +1,41 @@
+﻿# --- .NET build files ---
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+*.dbmdl
+
+# --- Rider (JetBrains IDE) ---
+.idea/
+*.sln.iml
+
+# --- ASP.NET config (optional, if present) ---
+*.user
+*.suo
+.vs/
+
+# --- NuGet packages ---
+*.nupkg
+*.snupkg
+packages/
+
+# --- OS generated ---
+.DS_Store
+Thumbs.db
+
+# --- Others ---
+*.swp
+*.tmp
+*.bak
+*.orig
+
+# --- Rider coverage / temp ---
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.ide
