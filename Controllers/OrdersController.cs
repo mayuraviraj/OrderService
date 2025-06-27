@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OrderService.API.Contracts;
 using OrderService.API.Features.CreateOrder;
 using OrderService.API.Features.GetOrder;
+using OrderService.API.Features.UpdateOrder;
 
 namespace OrderService.API.Controllers;
 
@@ -52,5 +53,13 @@ public class OrdersController(ILogger<OrdersController> logger, IMediator mediat
         }, cancellationToken);
 
         return Ok(result);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateOrderRequest request,
+        CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(new UpdateOrderCommand(id, request.CustomerName), cancellationToken);
+        return result ? NoContent() : NotFound();
     }
 }
